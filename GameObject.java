@@ -6,15 +6,15 @@ public class GameObject{
    
     protected String name;
     protected String description;
-    protected int x; //x cooordinate
-    protected int y; //y coordinate
+    protected double x; //x cooordinate
+    protected double y; //y coordinate
 
     /**
      * Full constructor
      * @param name The object's name.
      * @param description A description of the object.
      */
-    public GameObject(String name, String description, int x, int y){
+    public GameObject(String name, String description, double x, double y){
         this.name = name;
         this.description = description;
         this.x = x;
@@ -41,7 +41,7 @@ public class GameObject{
      * Getter for x coordinate.
      * @return The GameObject's x coordinate.
      */
-    public int getX(){
+    public double getX(){
         return this.x;
     }
 
@@ -49,7 +49,7 @@ public class GameObject{
      * Getter for y coordinate.
      * @return The GameObject's y coordinate.
      */
-    public int getY(){
+    public double getY(){
         return this.y;
     }
 }

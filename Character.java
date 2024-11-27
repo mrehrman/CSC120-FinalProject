@@ -5,7 +5,7 @@ public class Character extends GameObject{
     protected ArrayList<GameObject> inventory; 
     protected int health; //a health score ranging from 1-10
 
-    public Character(String name, String description, int x, int y){
+    public Character(String name, String description, double x, double y){
         super(name, description, x, y);
         this.inventory = new ArrayList<GameObject>(); //Characters start with an empty inventory.
         this.health = 10; //characters start with a full health score of 10.
