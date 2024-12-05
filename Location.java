@@ -12,4 +12,16 @@ public class Location extends GameObject{
         this.contents = new ArrayList<GameObject>();
 
     }
+
+    public void inLocation(GameObject object){
+        this.contents.add(object);
+        if(this.contents.contains(object)){
+            System.out.println(object.name + " is now in " + this.name);
+        }
+
+    }
+
+    public static void main(String[] args) {
+        
+    }
 }

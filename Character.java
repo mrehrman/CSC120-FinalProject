@@ -15,7 +15,7 @@ public class Character extends GameObject{
         System.out.println(sentence);
     }
 
-    public void move(String direction){
+    public void move(String direction, Map map){
         if (direction.equalsIgnoreCase("north")){
             this.y = this.y + 5;
         } else if (direction.equalsIgnoreCase("south")){
@@ -27,7 +27,15 @@ public class Character extends GameObject{
         } else{
             throw new RuntimeException("You can only move NORTH, SOUTH, EAST, or WEST. Try a different direction.");
         }
-    }
+        int length = map.getSize();
+        for (int i = 0; i < length; i++){
+            Location location = map.locations[i];
+            if (this.getX() == location.getX() && this.getY() == location.getY()){
+                location.inLocation(this);
+            }
+        }
+
+        }
 
     
     /**
@@ -44,6 +52,14 @@ public class Character extends GameObject{
     }
 
     /**
+     * 
+     * @param item
+     */
+    public void lookAround(){
+        
+    }
+
+    /**
      * Allows the Character to drop an item and remove it from their inventory.
      * @param item The object to drop.
      */
@@ -57,4 +73,7 @@ public class Character extends GameObject{
         }  
     }
 
+    public static void main(String[] args) {
+        
+    }
 }
