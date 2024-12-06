@@ -42,11 +42,12 @@ public class Map{
     }
 
     /**
-     * 
+     * Returns 
      * @param args
+     * @return True if the x and y coordinates are within the Map's parameters, false if they are not.
      */
     public boolean checkLimits(double x, double y){
-        if (this.minX <= x & x <= this.maxX & this.minY <= y & this.maxY <= y){
+        if (x >= this.minX & x <= this.maxX & y >= this.minY & y <= this.maxY){
             return true;
         } else {
             return false;
@@ -59,17 +60,11 @@ public class Map{
         gameMap.addLocation(forest1, 0);
         Location forest2 = new Location("forest", "You are in the forest. The trees block the light, so it is quite dark. \n There is a small path heading west.", 5, 10);
         gameMap.addLocation(forest2, 1);
-        Location field = new Location("field of flowers", "You are in a field full of flowers in every color of the rainbow. \n A small patch of flowers are shimmering. \n When you get closer, you see that there is a silver book on the ground underneath them.", 0, 5);
-        gameMap.addLocation(field, 2);
-        Location cottage = new Location("cottage", "You are at the cottage.", 5, 5);
-        gameMap.addLocation(cottage, 3);
-        Location forest3 = new Location("forest", "You are in the forest. You can hear the sound of rushing water nearby.", 5, 0);
-        gameMap.addLocation(forest3, 4);
-        Location waterfall = new Location("waterfall", "You are in front of a waterfall. At the base of the waterfall is a pool of water /n with a large rock in the middle. On the rock sits a bright blue book.", 10, 0);
-        gameMap.addLocation(waterfall, 5);
 
-        System.out.println(gameMap.checkLimits(0, 0));
-
+        System.out.println(gameMap.checkLimits(5, 5));
+        System.out.println(gameMap.checkLimits(-5, 12.5));
+        System.out.println(gameMap.checkLimits(0, 15));
+        System.out.println(gameMap.checkLimits(0, 11));
 
 
     }

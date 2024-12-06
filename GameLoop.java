@@ -43,11 +43,12 @@ public class GameLoop{
                 this.playing = true;
                 String[] words = this.split(userResponse); //split user response into individual words
                 int length = words.length;
-                for (int i = 0; i < length; i++){
+                for (int i = 0; i < length; i++){ 
                     //check if user wants to move
-                    if (words[i].equalsIgnoreCase("north") || words[i].equalsIgnoreCase("south") || words[i].equalsIgnoreCase("east") || words[i].equalsIgnoreCase("south")){
+                    if (words[i].equalsIgnoreCase("north") || words[i].equalsIgnoreCase("south") || words[i].equalsIgnoreCase("east") || words[i].equalsIgnoreCase("west")){
                         try{
                             protagonist.walk(words[i], map);
+                            System.out.println("x: " + protagonist.getX() + ", y: " + protagonist.getY());
                         } catch(RuntimeException e){
                             System.out.println(e);
                         }
