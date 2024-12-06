@@ -4,15 +4,13 @@ public class Character extends GameObject{
 
     protected ArrayList<GameObject> inventory; 
     protected int health; //a health score ranging from 1-10
+    protected Location location;
 
-    public Character(String name, String description, double x, double y){
+    public Character(String name, String description, double x, double y, Location location){
         super(name, description, x, y);
         this.inventory = new ArrayList<GameObject>(); //Characters start with an empty inventory.
         this.health = 10; //characters start with a full health score of 10.
-    }
-
-    public void speak(String sentence){
-        System.out.println(sentence);
+        this.location = location;
     }
 
     public void walk(String direction, Map map){
@@ -45,9 +43,10 @@ public class Character extends GameObject{
         }
         int length = map.getSize();
         for (int i = 0; i < length; i++){
-            Location location = map.locations[i];
-            if (this.getX() == location.getX() && this.getY() == location.getY()){
-                location.inLocation(this);
+            Location myLocation = map.locations[i];
+            if (this.getX() == myLocation.getX() && this.getY() == myLocation.getY()){
+                myLocation.inLocation(this);
+                this.location = myLocation;
             }
         }
         }

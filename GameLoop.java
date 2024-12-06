@@ -48,7 +48,6 @@ public class GameLoop{
                     if (words[i].equalsIgnoreCase("north") || words[i].equalsIgnoreCase("south") || words[i].equalsIgnoreCase("east") || words[i].equalsIgnoreCase("west")){
                         try{
                             protagonist.walk(words[i], map);
-                            System.out.println("x: " + protagonist.getX() + ", y: " + protagonist.getY());
                         } catch(RuntimeException e){
                             System.out.println(e);
                         }

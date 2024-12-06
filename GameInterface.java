@@ -19,7 +19,7 @@ public class GameInterface{
          gameMap.addLocation(waterfall, 5);
  
          //initiate protagonist
-         Character protagonist = new Character("Protagonist", "You are exploring the enchanted forest.", 5, 5);
+         Character protagonist = new Character("Protagonist", "You are exploring the enchanted forest.", 5, 5, cottage);
          System.out.println(protagonist.description);
  
          GameLoop myGame = new GameLoop();
