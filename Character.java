@@ -15,17 +15,33 @@ public class Character extends GameObject{
         System.out.println(sentence);
     }
 
-    public void move(String direction, Map map){
+    public void walk(String direction, Map map){
         if (direction.equalsIgnoreCase("north")){
-            this.y = this.y + 5;
+            if (map.checkLimits(this.x, this.y + 5)){
+                this.y = this.y + 5;
+            } else{
+                throw new RuntimeException("You cannot walk any further in that direction. Try a new direction.");
+            }
         } else if (direction.equalsIgnoreCase("south")){
-            this.y = this.y - 5;
+            if (map.checkLimits(this.x, this.y - 5)){
+                this.y = this.y - 5;
+            } else{
+                throw new RuntimeException("You cannot walk any further in that direction. Try a new direction.");
+            }
         } else if (direction.equalsIgnoreCase("east")){
-            this.x = this.x + 5;
+            if (map.checkLimits(this.x + 5, this.y)){
+                this.x = this.x + 5;
+            } else{
+                throw new RuntimeException("You cannot walk any further in that direction. Try a new direction.");
+            }
         } else if (direction.equalsIgnoreCase("west")){
-            this.x = this.x - 5;
+            if (map.checkLimits(this.x - 5, this.y)){
+                this.x = this.x - 5;
+            } else{
+                throw new RuntimeException("You cannot walk any further in that direction. Try a new direction.");
+            }
         } else{
-            throw new RuntimeException("You can only move NORTH, SOUTH, EAST, or WEST. Try a different direction.");
+            throw new RuntimeException("You can only walk NORTH, SOUTH, EAST, or WEST. Try a different direction.");
         }
         int length = map.getSize();
         for (int i = 0; i < length; i++){
@@ -34,7 +50,6 @@ public class Character extends GameObject{
                 location.inLocation(this);
             }
         }
-
         }
 
     

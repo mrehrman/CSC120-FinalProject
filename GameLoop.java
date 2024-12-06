@@ -31,8 +31,8 @@ public class GameLoop{
      */
     public void loop(Character protagonist, Map map){
         
-        System.out.println("Welcome to the library. Your task is to retrieve the stolen books.");
-        System.out.println("Enter anything to play. You can move 'NORTH, SOUTH, EAST, or WEST.' \n Enter 'QUIT' to exit the game.");
+        System.out.println("You have been exploring an enchanted forest and gotten lost wandering through the trees. \n You just came across a small cottage. It has ivy climbing up the sides and lights twinkling in the windows. \n You knock on the door and an older woman answers. She greets you kindly, but she appears frazzled. \n When you explain that you're lost, she tells you that she's in a pickle too. \n 'I have a beautiful library in my home, and some of my most precious books have been stolen,' she says. \n 'One of them includes a spell to guide a wanderer home--it would be of great help to you. Can you help me find the books?'");
+        System.out.println("Enter a command to accept your quest and help collect the lost books. Enter 'QUIT' to exit the game. \n You can 'WALK NORTH, SOUTH, EAST, or WEST,' 'LOOK AROUND,' GRAB,' or 'DROP.'");
         while (this.playing) {
             System.out.println("What would you like to do?");
             this.userResponse = this.userInput.nextLine();
@@ -41,15 +41,37 @@ public class GameLoop{
                 System.out.println("You have quit the game.");
             } else{
                 this.playing = true;
-                protagonist.move(userResponse, map);
-                // String[] words = this.split(userResponse);
-                // if (this.userResponse.equalsIgnoreCase("north") || this.userResponse.equalsIgnoreCase("south") || this.userResponse.equalsIgnoreCase("east") || this.userResponse.equalsIgnoreCase("west")){ //check if user wants to move
-                //     protagonist.move(this.userResponse, map);
-                //     System.out.println("Move");
-                // }
+                String[] words = this.split(userResponse); //split user response into individual words
+                int length = words.length;
+                for (int i = 0; i < length; i++){
+                    //check if user wants to move
+                    if (words[i].equalsIgnoreCase("north") || words[i].equalsIgnoreCase("south") || words[i].equalsIgnoreCase("east") || words[i].equalsIgnoreCase("south")){
+                        try{
+                            protagonist.walk(words[i], map);
+                        } catch(RuntimeException e){
+                            System.out.println(e);
+                        }
+                    //check if user wants to look around
+                    } else if (words[i].equalsIgnoreCase("look")){
+                        protagonist.lookAround();
+                    //check if user wants to pick up an object
+                    } else if (words[i].equalsIgnoreCase("grab")){
+                      // protagonist.grab(GameObject);
+                    //check if user wants to drop an object
+                    } else if (words[i].equalsIgnoreCase("drop")){
+                        //protagonist.drop(GameObject);
+                    }
+                }
+                //throw new RuntimeException("You cannot perform that action. Enter a new command. \n You can 'WALK NORTH, SOUTH, EAST, or WEST,' 'LOOK AROUND,' GRAB,' or 'DROP'");
+                
             }
         }
         this.userInput.close();  
+    }
+
+    public static void main(String[] args) {
+   
+    
     }
 
 }
