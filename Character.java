@@ -57,7 +57,7 @@ public class Character extends GameObject{
      * @param item
      */
     public void lookAround(){
-        System.out.println(this.location.contents);
+        this.location.contentsToString();
     }
 
     
@@ -94,7 +94,7 @@ public class Character extends GameObject{
         int length = this.inventory.size();//get length of contents
         for (int i = 0; i < length; i++){ //loop through contents
             GameObject item = this.inventory.get(i); 
-            if (item.name == objectName){
+            if (item.name.equalsIgnoreCase(objectName)){
                 return item;
             } 
         }

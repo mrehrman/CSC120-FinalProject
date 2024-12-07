@@ -44,7 +44,7 @@ public class Location extends GameObject{
         int length = this.contents.size();//get length of contents
         for (int i = 0; i < length; i++){ //loop through contents
             GameObject item = this.contents.get(i); 
-            if (item.name == objectName){
+            if (item.name.equalsIgnoreCase(objectName)){
                 return item;
             } 
         }
@@ -52,15 +52,16 @@ public class Location extends GameObject{
     }
 
 
-    // public void contentsToString(){
-    //     Object[] objects = this.contents.toArray();
-    //     int i = 1;
-    //     for (Object object : objects){
-    //         System.out.println(i + ". " + object);
-    //         i = i + 1;
-
-    //     }
-    // }
+    public void contentsToString(){
+        System.out.println("Objects near you: ");
+        for (GameObject object : this.contents){
+            if (object instanceof Location){
+                System.out.println(" ");
+            } else{
+                System.out.println(object.name);
+            }
+        }
+    }
 
     public static void main(String[] args) {
        //create books

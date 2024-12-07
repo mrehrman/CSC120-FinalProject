@@ -5,16 +5,16 @@ public class GameInterface{
         //create books
         GameObject book1 = new GameObject("SpellBook", "A book bound in a bright blue material. \n Large cursive script on the front reads 'Spell Book'");
         GameObject book2 = new GameObject("CookBook", "A silver book with elaborate red detailing on the spine. \n The front says 'Cook Book'");
-        GameObject book3 = new GameObject("FloraandFaunaoftheEnchantedForest", "A book with a dark green spine and brown cover that says 'Flora and Fauna of the Enchanted Forest'");
+        GameObject book3 = new GameObject("FloraandFauna", "A book with a dark green spine and brown cover that says 'Flora and Fauna of the Enchanted Forest'");
 
          //create map
          Map gameMap = new Map(6, 5, 0, 10, 0);
-         Location forest1 = new Location("forest", "You are in the forest. There are tall trees all around you. \n There is a small clearing in front of you with a large rock in it. \n When you look closer, you can see a book on top of the rock.", 0, 10);
+         Location forest1 = new Location("forest", "You are in the forest. There are tall trees all around you. \n There is a small clearing in front of you with a large rock in it.", 0, 10);
          forest1.addObject(book3);
          gameMap.addLocation(forest1, 0);
          Location forest2 = new Location("forest", "You are in the forest. The trees block the light, so it is quite dark. \n There is a small path heading west.", 5, 10);
          gameMap.addLocation(forest2, 1);
-         Location field = new Location("field of flowers", "You are in a field full of flowers in every color of the rainbow. \n A small patch of flowers are shimmering. \n When you get closer, you see that there is a silver book on the ground underneath them.", 0, 5);
+         Location field = new Location("field of flowers", "You are in a field full of flowers in every color of the rainbow. \n A small patch of flowers are shimmering.", 0, 5);
          gameMap.addLocation(field, 2);
          field.addObject(book2);
          Location cottage = new Location("cottage", "You are at the cottage.", 5, 5);
@@ -33,7 +33,7 @@ public class GameInterface{
          System.out.println(field.contents);
  
          GameLoop myGame = new GameLoop();
-         myGame.loop(protagonist, gameMap);
+         myGame.loop(protagonist, gameMap, cottage, book1, book2, book3);
         
     }
 }
