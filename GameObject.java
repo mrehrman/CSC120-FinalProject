@@ -22,6 +22,16 @@ public class GameObject{
     }
 
     /**
+     * Overloaded constructor, no x or y coordinate.
+     * @param name
+     * @param description
+     */
+    public GameObject(String name, String description){
+        this.name = name;
+        this.description = description;
+    }
+
+    /**
      * Getter for name.
      * @return The GameObject's name.
      */

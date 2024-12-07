@@ -45,11 +45,20 @@ public class Character extends GameObject{
         for (int i = 0; i < length; i++){
             Location myLocation = map.locations[i];
             if (this.getX() == myLocation.getX() && this.getY() == myLocation.getY()){
-                myLocation.inLocation(this);
+                myLocation.addObject(myLocation);
                 this.location = myLocation;
+                System.out.println(myLocation.description);
             }
         }
         }
+
+    /**
+     * 
+     * @param item
+     */
+    public void lookAround(){
+        System.out.println(this.location.contents);
+    }
 
     
     /**
@@ -59,18 +68,11 @@ public class Character extends GameObject{
     public void grab(GameObject item){
         if (item.x == this.x & item.y == this.y){
             inventory.add(item);
-            System.out.println("You have picked up a(n) " + item + ".");
+            System.out.println("You have picked up a(n) " + item.name + ".");
+            this.location.removeObject(item);
         } else{
             throw new RuntimeException("There is no " + item + " to grab.");
         }
-    }
-
-    /**
-     * 
-     * @param item
-     */
-    public void lookAround(){
-        
     }
 
     /**
@@ -81,7 +83,8 @@ public class Character extends GameObject{
        
         if (inventory.contains(item)){
             inventory.remove(item);
-            System.out.println("You have dropped " + item + ".");
+            System.out.println("You have dropped a(n) " + item.name + ".");
+            this.location.addObject(item);
         } else{
             throw new RuntimeException(item + " is not in your inventory.");
         }  

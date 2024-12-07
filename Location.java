@@ -23,13 +23,27 @@ public class Location extends GameObject{
 
     }
 
-    public void inLocation(GameObject object){
+    public void addObject(GameObject object){
         this.contents.add(object);
-        if(this.contents.contains(object)){
-            System.out.println(this.description);
-        }
-
     }
+
+    public void removeObject(GameObject object){
+        if (this.contents.contains(object)){
+            this.contents.remove(object);
+        } else {
+            throw new RuntimeException(object.description + " is not in " + this.name);
+        }
+    }
+
+    // public void contentsToString(){
+    //     Object[] objects = this.contents.toArray();
+    //     int i = 1;
+    //     for (Object object : objects){
+    //         System.out.println(i + ". " + object);
+    //         i = i + 1;
+
+    //     }
+    // }
 
     public static void main(String[] args) {
         

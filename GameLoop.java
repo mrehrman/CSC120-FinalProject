@@ -31,8 +31,8 @@ public class GameLoop{
      */
     public void loop(Character protagonist, Map map){
         
-        System.out.println("You have been exploring an enchanted forest and gotten lost wandering through the trees. \n You just came across a small cottage. It has ivy climbing up the sides and lights twinkling in the windows. \n You knock on the door and an older woman answers. She greets you kindly, but she appears frazzled. \n When you explain that you're lost, she tells you that she's in a pickle too. \n 'I have a beautiful library in my home, and some of my most precious books have been stolen,' she says. \n 'One of them includes a spell to guide a wanderer home--it would be of great help to you. Can you help me find the books?'");
-        System.out.println("Enter a command to accept your quest and help collect the lost books. Enter 'QUIT' to exit the game. \n You can 'WALK NORTH, SOUTH, EAST, or WEST,' 'LOOK AROUND,' GRAB,' or 'DROP.'");
+        System.out.println("You have been exploring an enchanted forest and gotten lost wandering through the trees. \n You just came across a small cottage. It has ivy climbing up the sides and lights twinkling in the windows. \n You knock on the door and an older woman answers. She greets you kindly, but she appears frazzled. \n When you explain that you're lost, she tells you that she's in a pickle too. \n 'I have a beautiful library in my home, and three of my most precious books have been stolen,' she says. \n 'One of them includes a spell to guide a wanderer home--it would be of great help to you. Can you help me find the books?'");
+        System.out.println("Enter a command to accept your quest and help collect the three lost books. Enter 'QUIT' to exit the game. \n You can 'WALK NORTH, SOUTH, EAST, or WEST,' 'LOOK AROUND,' GRAB,' or 'DROP.'");
         while (this.playing) {
             System.out.println("What would you like to do?");
             this.userResponse = this.userInput.nextLine();
