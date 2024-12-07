@@ -56,11 +56,9 @@ public class GameLoop{
                     //check if user wants to pick up an object
                     } else if (words[i].equalsIgnoreCase("grab")){
                         try{
-                            for (String word : words){
-                                if (word != "grab"){
-                                    GameObject object = protagonist.location.checkContents(word);
-                                    protagonist.grab(object);
-                                }  
+                            for (int a = 1; a < length; a++){
+                                GameObject object = protagonist.location.checkContents(words[a]);
+                                protagonist.grab(object);
                             }
                         } catch(RuntimeException e){
                             System.out.println(e);
