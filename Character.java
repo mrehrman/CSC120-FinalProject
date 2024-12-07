@@ -69,9 +69,9 @@ public class Character extends GameObject{
         if (this.location.contents.contains(item)){
             inventory.add(item);
             this.location.removeObject(item);
-            System.out.println("You have picked up a(n) " + item.name + ".");
+            System.out.println("You have grabbed a(n) " + item.name + ".");
         } else {
-            throw new RuntimeException("There is no " + item + " to grab.");
+            throw new RuntimeException("There is no " + item.name + " to grab.");
         }
     }
 
@@ -88,6 +88,17 @@ public class Character extends GameObject{
         } else{
             throw new RuntimeException(item + " is not in your inventory.");
         }  
+    }
+
+    public GameObject checkInventory(String objectName){
+        int length = this.inventory.size();//get length of contents
+        for (int i = 0; i < length; i++){ //loop through contents
+            GameObject item = this.inventory.get(i); 
+            if (item.name == objectName){
+                return item;
+            } 
+        }
+        throw new RuntimeException("There is no " + objectName + " in your inventory.");
     }
 
     public static void main(String[] args) {

@@ -22,7 +22,6 @@ public class GameLoop{
      */
     public String[] split(String response){
         String[] words = response.split(" ");
-        int length = words.length;
         return words;
     }
 
@@ -56,18 +55,35 @@ public class GameLoop{
                         protagonist.lookAround();
                     //check if user wants to pick up an object
                     } else if (words[i].equalsIgnoreCase("grab")){
-                        for (int j = 0; j < length; j++){
-                            try{
-                                GameObject object = protagonist.location.checkContents(words[j]);
-                                protagonist.grab(object);
-                            } catch(RuntimeException e) {
-                                System.out.println(e);
+                        try{
+                            for (String word : words){
+                                if (word != "grab"){
+                                    GameObject object = protagonist.location.checkContents(word);
+                                    protagonist.grab(object);
+                                }  
                             }
+                        } catch(RuntimeException e){
+                            System.out.println(e);
                         }
+                                //System.out.println(object.name);
+                            }
+                                //int a = 1; a < length; a++){
+                                   // Location currentLocation = protagonist.location;
+                                    //System.out.println(words[a]);
+                                    // GameObject object = currentLocation.checkContents(word);
+                        //             // System.out.println(object.name);
+                        //             //protagonist.grab(object);
+                        //     } 
+                        // } catch(RuntimeException e){
+                        //     System.out.println(e);
+                        // }
                     //check if user wants to drop an object
-                    } else if (words[i].equalsIgnoreCase("drop")){
-                        //protagonist.drop(GameObject);
-                    }
+                    // } else if (words[i].equalsIgnoreCase("drop")){
+                    //     for (int b = 1; b < length; b ++){
+                    //         GameObject item = protagonist.checkInventory(words[b]);
+                    //         protagonist.drop(item);
+                    //     }
+                    // }
                 }
                 //throw new RuntimeException("You cannot perform that action. Enter a new command. \n You can 'WALK NORTH, SOUTH, EAST, or WEST,' 'LOOK AROUND,' GRAB,' or 'DROP'");
                 

@@ -29,6 +29,8 @@ public class GameInterface{
          Character protagonist = new Character("Protagonist", "You are exploring the enchanted forest.", 5, 5, cottage);
          System.out.println(protagonist.description);
 
+         
+         System.out.println(field.contents);
  
          GameLoop myGame = new GameLoop();
          myGame.loop(protagonist, gameMap);
