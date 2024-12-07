@@ -3,9 +3,9 @@ public class GameInterface{
     public static void main(String[] args) {
 
         //create books
-        GameObject book1 = new GameObject("Spell Book", "A book bound in a bright blue material. \n Large cursive script on the front reads 'Spell Book'");
-        GameObject book2 = new GameObject("Cook Book", "A silver book with elaborate red detailing on the spine. \n The front says 'Cook Book'");
-        GameObject book3 = new GameObject("Flora and Fauna of the Enchanted Forest", "A book with a dark green spine and brown cover that says 'Flora and Fauna of the Enchanted Forest'");
+        GameObject book1 = new GameObject("SpellBook", "A book bound in a bright blue material. \n Large cursive script on the front reads 'Spell Book'");
+        GameObject book2 = new GameObject("CookBook", "A silver book with elaborate red detailing on the spine. \n The front says 'Cook Book'");
+        GameObject book3 = new GameObject("FloraandFaunaoftheEnchantedForest", "A book with a dark green spine and brown cover that says 'Flora and Fauna of the Enchanted Forest'");
 
          //create map
          Map gameMap = new Map(6, 5, 0, 10, 0);

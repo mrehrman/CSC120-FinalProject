@@ -56,7 +56,14 @@ public class GameLoop{
                         protagonist.lookAround();
                     //check if user wants to pick up an object
                     } else if (words[i].equalsIgnoreCase("grab")){
-                      // protagonist.grab(GameObject);
+                        for (int j = 0; j < length; j++){
+                            try{
+                                GameObject object = protagonist.location.checkContents(words[j]);
+                                protagonist.grab(object);
+                            } catch(RuntimeException e) {
+                                System.out.println(e);
+                            }
+                        }
                     //check if user wants to drop an object
                     } else if (words[i].equalsIgnoreCase("drop")){
                         //protagonist.drop(GameObject);

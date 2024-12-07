@@ -66,11 +66,11 @@ public class Character extends GameObject{
      * @param item The object to pick up.
      */
     public void grab(GameObject item){
-        if (item.x == this.x & item.y == this.y){
+        if (this.location.contents.contains(item)){
             inventory.add(item);
-            System.out.println("You have picked up a(n) " + item.name + ".");
             this.location.removeObject(item);
-        } else{
+            System.out.println("You have picked up a(n) " + item.name + ".");
+        } else {
             throw new RuntimeException("There is no " + item + " to grab.");
         }
     }
@@ -83,8 +83,8 @@ public class Character extends GameObject{
        
         if (inventory.contains(item)){
             inventory.remove(item);
-            System.out.println("You have dropped a(n) " + item.name + ".");
             this.location.addObject(item);
+            System.out.println("You have dropped a(n) " + item.name + ".");
         } else{
             throw new RuntimeException(item + " is not in your inventory.");
         }  
