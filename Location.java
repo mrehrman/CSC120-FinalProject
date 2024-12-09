@@ -92,7 +92,7 @@ public class Location extends GameObject{
             if (object instanceof Character){
                 System.out.println(" ");
             } else{
-                System.out.println(object.name + ": " + object.description);
+                System.out.println("* " + object.name + ": " + object.description);
             }
         }
     }

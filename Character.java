@@ -121,7 +121,7 @@ public class Character extends GameObject{
      * Allows the Character to pick up a Book and add it to their inventory. If the Book has swimSpell, gives the Character the ability to swim. 
      * @param item The object to pick up.
      */
-    public void grab(Book item){
+    public void grabBook(Book item){
         //check if the object is in the same Location as the Character
         if (this.location.contents.contains(item)){
             //add object to Character's inventory
@@ -132,6 +132,8 @@ public class Character extends GameObject{
             if (item.swimSpell) {
                 this.canSwim();
                 System.out.println(item.name + " has a swimming spell in it. You can now swim.");
+            } else {
+                System.out.println(" ");
             }
         } else {
             throw new RuntimeException("There is no " + item.name + " to grab.");
@@ -156,13 +158,14 @@ public class Character extends GameObject{
     }
 
     /**
-     * Checks if an object is in the Character's inventory.
+     * Checks if an object is in the Character's inventory. 
+     * rename this and getInventory, the names are confusing
      * @param objectName The object to check for.
      * @return
      */
     public GameObject checkInventory(String objectName){
-        int length = this.inventory.size();//get length of contents
-        for (int i = 0; i < length; i++){ //loop through contents
+        int length = this.inventory.size();//get length of inventory
+        for (int i = 0; i < length; i++){ //loop through inventory
             GameObject item = this.inventory.get(i); 
             if (item.name.equalsIgnoreCase(objectName)){
                 return item;
@@ -178,6 +181,17 @@ public class Character extends GameObject{
     public boolean canSwim(){
         this.swim = true;
         return this.swim;
+    }
+
+    /**
+     * Getter for Character's inventory. Prints the GameObjects in inventory in a formatted list.
+     */
+    public void getInventory(){
+        System.out.println("Items in your inventory: ");
+        int length = this.inventory.size();//get length of inventory
+        for (int i = 0; i < length; i++){ //loop through inventory
+            System.out.println("*" + this.inventory.get(i).name);
+        }
     }
 
     public static void main(String[] args) {

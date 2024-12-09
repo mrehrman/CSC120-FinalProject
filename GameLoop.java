@@ -32,6 +32,7 @@ public class GameLoop{
 
     /**
      * Loops through the game
+     * Note: it would be great to split this into multiple methods, it's very long
      * @param protagonist The Character that the user is playing the game as.
      * @param map The Map that the user navigates through.
      * @param win The Location that the user must drop 3 GameObjects in to win.
@@ -47,7 +48,7 @@ public class GameLoop{
         //print opening game messages
         System.out.println("*********************************************************************************");
         System.out.println(gamePremise);
-        System.out.println("Enter a command to accept your quest and " + quest + " \n Enter 'QUIT' to exit the game. You can 'WALK [NORTH, SOUTH, EAST, WEST]', 'LOOK AROUND', 'GRAB [OBJECT]', or 'DROP [OBJECT].'");
+        System.out.println("Enter a command to accept your quest and " + quest + " \n Enter 'QUIT' to exit the game. You can 'WALK [NORTH, SOUTH, EAST, WEST]', 'LOOK AROUND', 'GRAB [OBJECT]', \n 'DROP [OBJECT]', 'CHECK INVENTORY', or get 'HELP'.");
         //start loop, continues while the user is still playing
         while (this.playing) {
             while (this.win == false & this.playing == true){
@@ -79,8 +80,12 @@ public class GameLoop{
                             try{
                                 for (int a = 1; a < length; a++){
                                     GameObject object = protagonist.location.checkContents(words[a]);
-                                    protagonist.grab(object);
+                                    if (object instanceof Book){
+                                        protagonist.grabBook((Book) object);
+                                    } else{
+                                        protagonist.grab(object);
                                     }
+                                }
                             } catch(RuntimeException e){
                                 System.out.println(e);
                             }
@@ -98,6 +103,12 @@ public class GameLoop{
                                 this.win = true;
                                 this.playing = false;
                             }
+                        //check if user wants to check inventory
+                        } else if (words[i].equalsIgnoreCase("check")){
+                            protagonist.getInventory();
+                        //check if user wants help
+                        } else if (words[i].equalsIgnoreCase("help")){
+                            System.out.println("Enter 'QUIT' to exit the game. You can 'WALK [NORTH, SOUTH, EAST, WEST]', 'LOOK AROUND', 'GRAB [OBJECT]', \n 'DROP [OBJECT]', 'CHECK INVENTORY', or get 'HELP'.");
                         }
                     }   
                 }
