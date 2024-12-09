@@ -1,5 +1,6 @@
 /**
- * Elements of the game, including Characters, Locations, and other objects have the pieces from the GameObject class in common.
+ * Elements of the game, including Characters, Locations, and other objects inherit from the GameObject class--all have a name, description, and x and y coordinates.
+ * Something I would change in my design: this Class is unnecessary.
  */
 public class GameObject{
 
@@ -11,8 +12,10 @@ public class GameObject{
 
     /**
      * Full constructor
-     * @param name The object's name.
-     * @param description A description of the object.
+     * @param name The GameObject's's name.
+     * @param description A description of the GameObject.
+     * @param x The GameObject's x coordinate.
+     * @param y The GameObject's y coordinate.
      */
     public GameObject(String name, String description, double x, double y){
         this.name = name;
@@ -22,9 +25,9 @@ public class GameObject{
     }
 
     /**
-     * Overloaded constructor, no x or y coordinate.
-     * @param name
-     * @param description
+     * Overloaded constructor, does not require an x or y coordinate.
+     * @param name The GameObject's name.
+     * @param description A description of the GameObject.
      */
     public GameObject(String name, String description){
         this.name = name;
