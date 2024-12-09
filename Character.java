@@ -8,6 +8,7 @@ public class Character extends GameObject{
     protected ArrayList<GameObject> inventory; //the GameObjects a Character has
     protected int health; //a health score ranging from 1-10
     protected Location location; //the Location that the Character is in
+    protected boolean swim; //indicates if the Character can swim
 
     /**
      * Constructor. Note: params x and y are redundant when location is also a parameter.
@@ -22,6 +23,7 @@ public class Character extends GameObject{
         this.inventory = new ArrayList<GameObject>(); //Characters start with an empty inventory.
         this.health = 10; //Characters start with a full health score of 10.
         this.location = location;
+        this.swim = false; //Characters start unable to swim.
     }
 
     /**
@@ -63,12 +65,31 @@ public class Character extends GameObject{
         for (int i = 0; i < length; i++){
             Location myLocation = map.locations[i];
             if (this.getX() == myLocation.getX() && this.getY() == myLocation.getY()){
-                myLocation.addObject(this);
-                this.location = myLocation;
-                System.out.println(myLocation.description);
+                if (myLocation.hasWater){
+                    if (this.swim){
+                        myLocation.addObject(this);
+                        this.location = myLocation;
+                        System.out.println(myLocation.description);
+                    } else {
+                        if (direction.equalsIgnoreCase("north")){
+                            this.y = this.y - 5;
+                        } else if (direction.equalsIgnoreCase("south")){
+                            this.y = this.y + 5;
+                        } else if (direction.equalsIgnoreCase("east")){
+                            this.x = this.x - 5;
+                        } else if (direction.equalsIgnoreCase("west")){
+                            this.x = this.x + 5;
+                        }
+                        throw new RuntimeException("You cannot enter this location because you cannot swim. Find a spell to help you swim.");
+                    }
+                } else{
+                    myLocation.addObject(this);
+                    this.location = myLocation;
+                    System.out.println(myLocation.description);
+                }
             }
         }
-        }
+    }
 
 
     /**
@@ -91,6 +112,27 @@ public class Character extends GameObject{
             //remove object from Location's contents
             this.location.removeObject(item);
             System.out.println("You have grabbed a(n) " + item.name + ".");
+        } else {
+            throw new RuntimeException("There is no " + item.name + " to grab.");
+        }
+    }
+
+     /**
+     * Allows the Character to pick up a Book and add it to their inventory. If the Book has swimSpell, gives the Character the ability to swim. 
+     * @param item The object to pick up.
+     */
+    public void grab(Book item){
+        //check if the object is in the same Location as the Character
+        if (this.location.contents.contains(item)){
+            //add object to Character's inventory
+            inventory.add(item);
+            //remove object from Location's contents
+            this.location.removeObject(item);
+            System.out.println("You have grabbed a(n) " + item.name + ".");
+            if (item.swimSpell) {
+                this.canSwim();
+                System.out.println(item.name + " has a swimming spell in it. You can now swim.");
+            }
         } else {
             throw new RuntimeException("There is no " + item.name + " to grab.");
         }
@@ -127,6 +169,15 @@ public class Character extends GameObject{
             } 
         }
         throw new RuntimeException("There is no " + objectName + " in your inventory.");
+    }
+
+    /**
+     * Setter for swim attribute, changes swim to true.
+     * @return True to indicate that the Character can now swim.
+     */
+    public boolean canSwim(){
+        this.swim = true;
+        return this.swim;
     }
 
     public static void main(String[] args) {

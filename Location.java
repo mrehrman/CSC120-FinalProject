@@ -6,6 +6,7 @@ import java.util.ArrayList;
 public class Location extends GameObject{
 
     protected ArrayList<GameObject> contents; //the GameObjects in a Location
+    protected boolean hasWater; 
     
     /**
      * Constructor.
@@ -13,10 +14,12 @@ public class Location extends GameObject{
      * @param description The Location's description.
      * @param centerX The x coordinate at which the Location is accessible.
      * @param centerY The y coordinate at which the Location is accesible.
+     * @param hasWater True if the Location has water in it, false if the location does not.
      */
-    public Location(String name, String description, double centerX, double centerY){
+    public Location(String name, String description, double centerX, double centerY, boolean hasWater){
         super(name, description, centerX, centerY);
         this.contents = new ArrayList<GameObject>();
+        this.hasWater = hasWater;
 
     }
 
@@ -27,10 +30,12 @@ public class Location extends GameObject{
      * @param centerX The x coordinate at which the Location is accessible.
      * @param centerY The y coordinate at which the Location is accesible.
      * @param object A GameObject to add to the Location's contents.
+     * @param hasWater True if the Location has water in it, false if the location does not.
      */
-    public Location(String name, String description, double centerX, double centerY, GameObject object){
+    public Location(String name, String description, double centerX, double centerY, GameObject object, boolean hasWater){
         super(name, description, centerX, centerY);
         this.contents = new ArrayList<GameObject>();
+        this.hasWater = hasWater;
         contents.add(object);
 
     }

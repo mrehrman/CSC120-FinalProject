@@ -11,28 +11,28 @@ public class GameInterface{
     public static void main(String[] args) {
 
         //initialize GameObject books
-        GameObject book1 = new GameObject("spellbook", "A book bound in a bright blue material. \n Large cursive script on the front reads 'Spell Book'");
-        GameObject book2 = new GameObject("cookbook", "A silver book with elaborate red detailing on the spine. \n The front says 'Cook Book'");
-        GameObject book3 = new GameObject("fairytales", "A book with a dark green spine and brown cover that says 'Fairytales'");
+        Book book1 = new Book("spellbook", "A book bound in a bright blue material. \n Large cursive script on the front reads 'Spell Book'", true);
+        Book book2 = new Book("cookbook", "A silver book with elaborate red detailing on the spine. \n The front says 'Cook Book'", false);
+        Book book3 = new Book("fairytales", "A book with a dark green spine and brown cover that says 'Fairytales'", false);
 
         //initialize Map, initiate Locations, add GameObjects to Locations, add Locations to Map
         //goal: make Map more robust with more locations
         Map gameMap = new Map(6, 5, 0, 10, 0);
-        Location forest1 = new Location("forest", "You are in the forest. There are tall trees all around you. \n There is a small clearing in front of you with a large rock in it.", 0, 10);
-        forest1.addObject(book3);
+        Location forest1 = new Location("forest", "You are in the forest. There are tall trees all around you. \n There is a small clearing in front of you with a large rock in it.", 0, 10, false);
+        forest1.addObject(book1);
         gameMap.addLocation(forest1, 0);
-        Location forest2 = new Location("forest", "You are in the forest. The trees block the light, so it is quite dark. \n There is a small path heading west.", 5, 10);
+        Location forest2 = new Location("forest", "You are in the forest. The trees block the light, so it is quite dark. \n There is a small path heading west.", 5, 10, false);
         gameMap.addLocation(forest2, 1);
-        Location field = new Location("field of flowers", "You are in a field full of flowers in every color of the rainbow. \n A small patch of flowers are shimmering.", 0, 5);
+        Location field = new Location("field of flowers", "You are in a field full of flowers in every color of the rainbow. \n A small patch of flowers are shimmering.", 0, 5, false);
         gameMap.addLocation(field, 2);
         field.addObject(book2);
-        Location cottage = new Location("cottage", "You are at the cottage.", 5, 5);
+        Location cottage = new Location("cottage", "You are at the cottage.", 5, 5, false);
         gameMap.addLocation(cottage, 3);
-        Location forest3 = new Location("forest", "You are in the forest. You can hear the sound of rushing water nearby.", 0, 0);
+        Location forest3 = new Location("forest", "You are in the forest. You can hear the sound of rushing water nearby.", 0, 0, false);
         gameMap.addLocation(forest3, 4);
-        Location waterfall = new Location("waterfall", "You are in front of a waterfall. At the base of the waterfall is a pool of water \n with a large rock in the middle.", 5 , 0);
+        Location waterfall = new Location("waterfall", "You are in front of a waterfall. At the base of the waterfall is a pool of water \n with a large rock in the middle.", 5 , 0, true);
         gameMap.addLocation(waterfall, 5);
-        waterfall.addObject(book1);
+        waterfall.addObject(book3);
  
         //initialize Character protagonist
         Character protagonist = new Character("Protagonist", "You are exploring the enchanted forest.", 5, 5, cottage);
