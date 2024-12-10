@@ -4,7 +4,7 @@
 public class GameInterface{
 
     /**
-     * Initializes the variables needed to run a GameLopp and runs a GameLoop with those variables.
+     * Initializes the variables needed to run a GameLoop and runs a GameLoop with those variables.
      * @param args
      */
 

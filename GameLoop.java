@@ -46,6 +46,8 @@ public class GameLoop{
     public void loop(Character protagonist, Map map, Location win, GameObject object1, GameObject object2, GameObject object3, String gamePremise, String quest, String winMessage){
         
         //print opening game messages
+        System.out.println(" ");
+        System.out.println(" ");
         System.out.println("*********************************************************************************");
         System.out.println(gamePremise);
         System.out.println("Enter a command to accept your quest and " + quest + " \n Enter 'QUIT' to exit the game. You can 'WALK [NORTH, SOUTH, EAST, WEST]', 'LOOK AROUND', 'GRAB [OBJECT]', \n 'DROP [OBJECT]', 'CHECK INVENTORY', or get 'HELP'.");

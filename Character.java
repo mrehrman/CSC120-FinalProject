@@ -67,7 +67,7 @@ public class Character extends GameObject{
             if (this.getX() == myLocation.getX() && this.getY() == myLocation.getY()){
                 if (myLocation.hasWater){
                     if (this.swim){
-                        myLocation.addObject(this);
+                        myLocation.addObject(this); //don't need to do this because character is keeping track of its location
                         this.location = myLocation;
                         System.out.println(myLocation.description);
                     } else {
