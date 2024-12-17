@@ -1,5 +1,5 @@
 /**
- * Runs the game with information provided in main. Next goal: instead of initializing variables in main, put the information into a text file for GameInterface to read.
+ * Runs the game with information provided in main.
  */
 public class GameInterface{
 

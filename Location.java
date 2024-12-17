@@ -84,17 +84,12 @@ public class Location extends GameObject{
 
     /**
      * Prints a formatted list of the GameObjects in a Location.
-     * Note: update this method.
      */
     public void contentsToString(){
         System.out.println("Objects near you: ");
         for (GameObject object : this.contents){
-            if (object instanceof Character){
-                System.out.println(" ");
-            } else{
                 System.out.println("* " + object.name + ": " + object.description);
             }
-        }
     }
 
     public static void main(String[] args) {

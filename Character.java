@@ -67,7 +67,6 @@ public class Character extends GameObject{
             if (this.getX() == myLocation.getX() && this.getY() == myLocation.getY()){
                 if (myLocation.hasWater){
                     if (this.swim){
-                        myLocation.addObject(this); //don't need to do this because character is keeping track of its location
                         this.location = myLocation;
                         System.out.println(myLocation.description);
                     } else {
@@ -83,7 +82,6 @@ public class Character extends GameObject{
                         throw new RuntimeException("You cannot enter this location because you cannot swim. Find a spell to help you swim.");
                     }
                 } else{
-                    myLocation.addObject(this);
                     this.location = myLocation;
                     System.out.println(myLocation.description);
                 }
@@ -159,7 +157,6 @@ public class Character extends GameObject{
 
     /**
      * Checks if an object is in the Character's inventory. 
-     * rename this and getInventory, the names are confusing
      * @param objectName The object to check for.
      * @return
      */

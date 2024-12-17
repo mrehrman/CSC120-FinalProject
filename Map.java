@@ -30,7 +30,8 @@ public class Map{
 
     /**
      * Adds a Location to the GameMap
-     * @param b the Location to add
+     * @param l the Location to add
+     * @param index the index to add the Location at
      * @return Location the Location that was added
      */
     public Location addLocation(Location l, int index) {
