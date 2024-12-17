@@ -1,15 +1,6 @@
-# CSC120-FinalProject
+My game design includes GameObject, Character, Location, Map, Book, GameLoop, and GameInterface classes. They work together to create a text-based interface that allows a user to interact with the game, navigating through the Map and collecting Books. An alternative that I considered in my design was removing the GameObject class. Even though a lot of my classes inherit from GameObject, it would be easy enough to include name and description attribtutes, the main elements that other classes took from GameObject, to each individual class. However, I decided to stick with GameObject as a class, as it allowed most elements of the game to start with those basic elements that I needed the classes to have.
 
-## Deliverables:
- - Your final codebase
- - Your revised annotated architecture diagram
- - Design justification (including a brief discussion of at least one alternative you considered)
- - A map of your game's layout (if applicable)
- - `cheatsheet.md`
- - Completed `rubric.md`
-  
-## Additional Reflection Questions
- - What was your **overall approach** to tackling this project?
+- What was your **overall approach** to tackling this project?
  Once I got started, my overall approach was to break the project into small chunks and get them working. Each step made a new part of the game start functioning and got closer to having a fully functioning game. My first goal was to make it so that a player could navigate through a map, which required creating the character and map, as well as an interface that a user could interact with. After that I slowly added other features to create the objects the player would need to find and set up the win condition.
 
  - What **new thing(s)** did you learn / figure out in completing this project?
@@ -29,3 +20,4 @@
  
  - _If you worked with a team:_ please comment on how your **team dynamics** influenced your experience working on this project.
  N/A
+
